@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.demo.bean.DeliveryEntity;
 import com.example.demo.bean.DomesticHelpEntity;
 import com.example.demo.service.IDomesticHelpService;
 
@@ -33,23 +31,33 @@ public class DomesticHelpController {
 		return new ResponseEntity<>(domHelpEnt , HttpStatus.OK);
 	}
 	//delete DomesticHelpEntity
-		@DeleteMapping("/domesticHelp/{id}")
-		ResponseEntity<DomesticHelpEntity> delete(@RequestBody DomesticHelpEntity domesticHelpEntity) {
-		domesticHelpService.delete(domesticHelpEntity);
-		return new ResponseEntity<>(HttpStatus.OK); 
-		}
-			
-		//update DomesticHelpEntity
-		@PutMapping("/domesticHelp")
-		ResponseEntity<DomesticHelpEntity> update(@RequestBody DomesticHelpEntity domesticHelpEntity) {
-		domesticHelpService.update(domesticHelpEntity);
-		return new ResponseEntity<>( HttpStatus.OK); 
-		}
-		//find DomesticHelpEntity by Id
-		@GetMapping("/domesticHelp/{id}")
-		DomesticHelpEntity findByPk(@PathVariable("id") int id) {
-			return domesticHelpService.findByPk(id);
-			
-		}
+	@DeleteMapping("/domesticHelp/{id}")
+	ResponseEntity<DomesticHelpEntity> delete(@RequestBody DomesticHelpEntity domesticHelpEntity) {
+	domesticHelpService.delete(domesticHelpEntity);
+	return new ResponseEntity<>(HttpStatus.OK); 
+	}
+	//update DomesticHelpEntity
+	@PutMapping("/domesticHelp")
+	ResponseEntity<DomesticHelpEntity> update(@RequestBody DomesticHelpEntity domesticHelpEntity) {
+	domesticHelpService.update(domesticHelpEntity);
+	return new ResponseEntity<>( HttpStatus.OK); 
+	}
+	//find DomesticHelpEntity by Id
+	@GetMapping("/domesticHelp/{id}")
+	DomesticHelpEntity findByPk(@PathVariable("id") int id) {
+	return domesticHelpService.findByPk(id);
+	}
+	//search DomesticHelpEntity
+	@PostMapping("/searchdomesticHelp")
+	ResponseEntity<List<DomesticHelpEntity>> search(@RequestBody DomesticHelpEntity domesticHelpEntity) {
+	List<DomesticHelpEntity> domEnt = domesticHelpService.search(domesticHelpEntity);
+	return new ResponseEntity<>(domEnt, HttpStatus.OK);
+	}
+	//search by pageNo and PageSize
+	@GetMapping("domesticHelpByNoAndSize/{pageNo}/{pageSize}")
+	ResponseEntity<List<DomesticHelpEntity>> search(@PathVariable("pageNo") Long pageNo,@PathVariable("pageSize") Integer pageSize) {
+	List<DomesticHelpEntity> domEnt = domesticHelpService.search(pageNo,pageSize);
+	return new ResponseEntity<>(domEnt, HttpStatus.OK);
+	}
 		
 }

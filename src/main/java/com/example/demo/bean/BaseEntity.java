@@ -2,26 +2,19 @@ package com.example.demo.bean;
 
 
 import java.sql.Timestamp;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
-
-
 import lombok.Data;
-import lombok.Generated;
+
 
 @Data
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
-public abstract class BaseEntity  implements IDropdownList{
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public  class BaseEntity  implements IDropdownList{
 	
 		@Id
-		@GeneratedValue
 		protected long id;
 		protected String createdBy;
 		protected String modifiedBy;
@@ -29,12 +22,10 @@ public abstract class BaseEntity  implements IDropdownList{
 		protected Timestamp modifiedDateTime;
 		@Override
 		public String getKey() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 		@Override
 		public String getValue() {
-			// TODO Auto-generated method stub
 			return null;
 		}
 		

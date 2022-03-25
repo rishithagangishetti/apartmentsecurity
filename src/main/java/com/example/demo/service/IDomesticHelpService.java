@@ -16,7 +16,7 @@ public interface IDomesticHelpService {
 	
 	public DomesticHelpEntity findByPk(long id);
 	
-	public List<DomesticHelpEntity> search(DomesticHelpEntity bean, long pageNo, int pageSize);
+	public List<DomesticHelpEntity> search(long pageNo, int pageSize);
 	
 	public List<DomesticHelpEntity> search(DomesticHelpEntity bean);
 	
