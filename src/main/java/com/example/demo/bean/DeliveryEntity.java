@@ -1,8 +1,6 @@
 package com.example.demo.bean;
 
 import java.util.Date;
-
-
 import javax.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,21 +11,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DeliveryEntity extends BaseEntity{
 	
-
+	
 	private String ownerName;
 	private String time;
 	private Date date;
 	private String status;
 	@Override
 	public String getKey() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public String getValue() {
-		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	
 	
 	

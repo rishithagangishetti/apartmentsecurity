@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,35 +20,46 @@ public class DeliveryController {
 	@Autowired
 	IDeliveryService delServ;
 	//add DeliveryEntity
-	@PostMapping("/addDeliveryEntity")
-    ResponseEntity<Long> add(@RequestBody DeliveryEntity deliveryEntity) {
-    	
+	@PostMapping("/addDelivery")
+    ResponseEntity<Long> add(@RequestBody DeliveryEntity deliveryEntity)  {
 		long delEnt = delServ.add(deliveryEntity);
 		return new ResponseEntity<>(delEnt, HttpStatus.OK);
 	}
 	//find deliveryEntity by Name
-	@GetMapping("/deliveryEntity/byName/{name}")
+	@GetMapping("/delivery/byName/{name}")
 	ResponseEntity<DeliveryEntity> findByName(@PathVariable("name") String name) {
 		DeliveryEntity delEnt = delServ.findByName(name);
 		return new ResponseEntity<>(delEnt, HttpStatus.OK);
 	}
 	//delete deliverEntity
-	@DeleteMapping("/deleteDeliveryEntity")
+	@DeleteMapping("/deleteDelivery")
 	ResponseEntity<DeliveryEntity> delete(@RequestBody DeliveryEntity deliveryEntity) {
 	delServ.delete(deliveryEntity);
 	return new ResponseEntity<>(HttpStatus.OK); 
 	}
 		
 	//update deliverEntity
-	@PutMapping("/deliveryEntity")
+	@PutMapping("/updateDelivery")
 	ResponseEntity<DeliveryEntity> update(@RequestBody DeliveryEntity deliveryEntity) {
 	delServ.update(deliveryEntity);
 	return new ResponseEntity<>( HttpStatus.OK); 
 	}
 	//find deliveryEntity by Id
-	@GetMapping("/updateDeliveryEntity/{id}")
+	@GetMapping("/delivery/{id}")
 	DeliveryEntity findByPk(@PathVariable("id") int empId) {
 		return delServ.findByPk(empId);
 		
 	}
+	//search deliveryEntity
+	@PostMapping("/searchdelivery")
+	ResponseEntity<List<DeliveryEntity>> search(@RequestBody DeliveryEntity deliveryEntity) {
+	List<DeliveryEntity> delEnt = delServ.search(deliveryEntity);
+	return new ResponseEntity<>(delEnt, HttpStatus.OK);
+		}
+	//search by pageNo and PageSize
+	@GetMapping("deliveryByNoAndSize/{pageNo}/{pageSize}")
+	ResponseEntity<List<DeliveryEntity>> search(@PathVariable("pageNo") Long pageNo,@PathVariable("pageSize") Integer pageSize) {
+		List<DeliveryEntity> delEnt = delServ.search(pageNo,pageSize);
+		return new ResponseEntity<>(delEnt, HttpStatus.OK);
+}
 }
