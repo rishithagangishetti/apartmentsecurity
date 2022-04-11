@@ -19,7 +19,7 @@ import com.example.demo.service.IDomesticHelpService;
 public class DomesticHelpController {
 	@Autowired
 	IDomesticHelpService domesticHelpService;
-	@PostMapping("/domesticHelpAdd")
+	@PostMapping("/addDomesticHelp")
     ResponseEntity<Long> add(@RequestBody DomesticHelpEntity domesticHelp) {
 		long domHelpEnt = domesticHelpService.add(domesticHelp);
 		return new ResponseEntity<>(domHelpEnt, HttpStatus.OK);
@@ -37,7 +37,7 @@ public class DomesticHelpController {
 	return new ResponseEntity<>(HttpStatus.OK); 
 	}
 	//update DomesticHelpEntity
-	@PutMapping("/domesticHelp")
+	@PutMapping("/updateDomesticHelp")
 	ResponseEntity<DomesticHelpEntity> update(@RequestBody DomesticHelpEntity domesticHelpEntity) {
 	domesticHelpService.update(domesticHelpEntity);
 	return new ResponseEntity<>( HttpStatus.OK); 
