@@ -32,71 +32,76 @@ public class DeliveryServiceMockitoTest {
 	@Test
 	void addDeliveryTest() throws ParseException
 	{
-		DeliveryEntity d=new DeliveryEntity();
-		d.setId(1);
-		d.setCreatedBy("rishitha");
-		d.setCreatedDateTime(java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0"));
-		d.setModifiedDateTime(java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0"));
-		d.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("22-03-2022"));
-		d.setModifiedBy("rishitha");
-		d.setOwnerName("Rahul");
-		d.setStatus("delivered");
-		d.setTime("7:00 AM");
-		Mockito.when(delRepo.save(d)).thenReturn(d);
-		long delivery=delService.add(d);
-		assertEquals(1,delivery);	
+		DeliveryEntity delivery=new DeliveryEntity();
+		delivery.setId(1);
+		delivery.setCreatedBy("rishitha");
+		delivery.setCreatedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
+		delivery.setModifiedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
+		delivery.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("22-03-2022"));
+		delivery.setModifiedBy("rishitha");
+		delivery.setOwnerName("Ramesh");
+		delivery.setStatus("delivered");
+		delivery.setTime("7:00 AM");
+		Mockito.when(delRepo.save(delivery)).thenReturn(delivery);
+		long num=delService.add(delivery);
+		assertEquals(1,num);	
 	}
 	@Test
 	void updateDeliveryTest() throws ParseException
 	{
-		DeliveryEntity d=new DeliveryEntity();
-		d.setId(1);
-		d.setCreatedBy("rishitha");
-		d.setCreatedDateTime(java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0"));
-		d.setModifiedDateTime(java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0"));
-		d.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("22-03-2022"));
-		d.setModifiedBy("rishitha");
-		d.setOwnerName("Ramesh");
-		d.setStatus("delivered");
-		d.setTime("7:00 AM");
-		Mockito.when(delRepo.findById((long) 1)).thenReturn(Optional.of(d));
-		Mockito.when(delRepo.save(d)).thenReturn(d);
-		delService.update(d);
-		assertEquals("Ramesh",d.getOwnerName());	
+		DeliveryEntity delivery=new DeliveryEntity();
+		delivery.setId(1);
+		delivery.setCreatedBy("rishitha");
+		delivery.setCreatedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
+		delivery.setModifiedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
+		delivery.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("22-03-2022"));
+		delivery.setModifiedBy("rishitha");
+		delivery.setOwnerName("Ramesh");
+		delivery.setStatus("delivered");
+		delivery.setTime("7:00 AM");
+		Mockito.when(delRepo.findById((long) 1)).thenReturn(Optional.of(delivery));
+		Mockito.when(delRepo.save(delivery)).thenReturn(delivery);
+		delService.update(delivery);
+		assertEquals("Ramesh",delivery.getOwnerName());	
 	}
 	@Test
 	void findByNameTest() throws ParseException
 	{
-		DeliveryEntity d=new DeliveryEntity();
-		d.setId(1);
-		d.setCreatedBy("rishitha");
-		d.setCreatedDateTime(java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0"));
-		d.setModifiedDateTime(java.sql.Timestamp.valueOf("2007-09-23 10:10:10.0"));
-		d.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("22-03-2022"));
-		d.setModifiedBy("rishitha");
-		d.setOwnerName("Ramesh");
-		d.setStatus("delivered");
-		d.setTime("7:00 AM");
-		Mockito.when(delRepo.findByownerName("Ramesh")).thenReturn(d);
+		DeliveryEntity delivery=new DeliveryEntity();
+		delivery.setId(1);
+		delivery.setCreatedBy("rishitha");
+		delivery.setCreatedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
+		delivery.setModifiedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
+		delivery.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("22-03-2022"));
+		delivery.setModifiedBy("rishitha");
+		delivery.setOwnerName("Ramesh");
+		delivery.setStatus("delivered");
+		delivery.setTime("7:00 AM");
+		Mockito.when(delRepo.findByownerName("Ramesh")).thenReturn(delivery);
 		DeliveryEntity delEnt=delService.findByName("Ramesh");
 		assertEquals("Ramesh",delEnt.getOwnerName());
 	}
 	@Test
 	void findByPkTest() throws ParseException
 	{
-		DeliveryEntity d=new DeliveryEntity();
-		d.setId(1);
-		d.setCreatedBy("rishitha");
-		d.setCreatedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
-		d.setModifiedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
-		d.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("22-03-2022"));
-		d.setModifiedBy("rishitha");
-		d.setOwnerName("Ramesh");
-		d.setStatus("delivered");
-		d.setTime("7:00 AM");
-		Mockito.when(delRepo.findById((long) 1)).thenReturn(Optional.of(d));
+		DeliveryEntity delivery=new DeliveryEntity();
+		delivery.setId(1);
+		delivery.setCreatedBy("rishitha");
+		delivery.setCreatedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
+		delivery.setModifiedDateTime(java.sql.Timestamp.valueOf("2022-03-23 10:10:10.0"));
+		delivery.setDate(new SimpleDateFormat("dd-MM-yyyy").parse("22-03-2022"));
+		delivery.setModifiedBy("rishitha");
+		delivery.setOwnerName("Ramesh");
+		delivery.setStatus("delivered");
+		delivery.setTime("7:00 AM");
+		Mockito.when(delRepo.findById((long) 1)).thenReturn(Optional.of(delivery));
 		DeliveryEntity delEnt=delService.findByPk(1);
 		assertEquals(1,delEnt.getId());
+		assertEquals("rishitha",delEnt.getCreatedBy());
+		assertEquals("rishitha",delEnt.getModifiedBy());
+		assertEquals("Ramesh",delEnt.getOwnerName());
+		assertEquals("delivered",delEnt.getStatus());
+		assertEquals("7:00 AM",delEnt.getTime());
 	}
 	@Test
 	void searchTest()
